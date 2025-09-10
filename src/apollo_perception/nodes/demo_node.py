@@ -1,26 +1,28 @@
+#!/usr/bin/env python3
+import rclpy
+from rclpy.node import Node
 
-**`package.xml`**
-```xml
-<?xml version="1.0"?>
-<package format="3">
-  <name>apollo_perception</name>
-  <version>0.0.1</version>
-  <description>APOLLO Perception package (skeleton)</description>
+class DemoNode(Node):
+    def __init__(self):
+        super().__init__('demo_node')
+        self.timer = self.create_timer(1.0, self.on_timer)
+        self.get_logger().info('APOLLO Perception demo node started')
 
-  <maintainer email="hknuapollo@gmail.com">APOLLO</maintainer>
-  <license>Proprietary</license>
+    def on_timer(self):
+        self.get_logger().info('perception tick')
 
-  <buildtool_depend>ament_cmake</buildtool_depend>
-  <buildtool_depend>ament_cmake_python</buildtool_depend>
+def main():
+    rclpy.init()
+    node = DemoNode()
+    try:
+        rclpy.spin(node)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        node.destroy_node()
+        rclpy.shutdown()
 
-  <exec_depend>rclpy</exec_depend>
-  <exec_depend>std_msgs</exec_depend>
+if __name__ == '__main__':
+    main()
 
-  <test_depend>ament_lint_auto</test_depend>
-  <test_depend>ament_lint_common</test_depend>
-
-  <export>
-    <build_type>ament_python</build_type>
-  </export>
-</package>
 
