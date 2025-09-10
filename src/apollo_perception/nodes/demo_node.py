@@ -1,1 +1,26 @@
 
+**`package.xml`**
+```xml
+<?xml version="1.0"?>
+<package format="3">
+  <name>apollo_perception</name>
+  <version>0.0.1</version>
+  <description>APOLLO Perception package (skeleton)</description>
+
+  <maintainer email="hknuapollo@gmail.com">APOLLO</maintainer>
+  <license>Proprietary</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>ament_cmake_python</buildtool_depend>
+
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>
+
